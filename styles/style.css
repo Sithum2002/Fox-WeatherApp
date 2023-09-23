@@ -18,6 +18,15 @@ header[role="banner"] {
 
 
 
+  .container {
+    display: flex;
+    gap: 35px;
+    padding: 30px;
+  }
+  
+
+
+
   .weather-input {
     width: 550px;
   }
@@ -73,3 +82,55 @@ header[role="banner"] {
   .weather-input .location-btn:hover {
     background: #5c636a;
   }
+
+  .weather-data {
+    width: 100%;
+  }
+
+  .weather-data .current-weather {
+    color: #fff;
+    background: #5372F0;
+    border-radius: 5px;
+    padding: 20px 70px 20px 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .current-weather .icon {
+    text-align: center;
+  }
+
+  .current-weather .icon img {
+    max-width: 120px;
+    margin-top: -15px;
+  }
+
+  .days-forecast .weather-cards {
+    display: flex;
+    gap: 20px;
+  }
+
+  .weather-cards .card {
+    color: #fff;
+    padding: 18px 16px;
+    list-style: none;
+    width: calc(100% / 5);
+    background: #6C757D;
+    border-radius: 5px;
+  }
+
+  .weather-cards .historical-card {
+    color: #fff;
+    padding: 18px 16px;
+    list-style: none;
+    width: calc(100% / 5);
+    background: #6C757D;
+    border-radius: 5px;
+  }
+
+
+  .weather-cards .card img {
+    max-width: 70px;
+    margin: 5px 0 -12px 0;
+  }
+  

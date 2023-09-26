@@ -6,6 +6,13 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>FOX-Weather</title>
 
+
+
+<!-- Leaflet.js CSS and JavaScript -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
    <link rel="stylesheet" href="styles/style.css">
    <script src="scripts/main.js" defer></script>
 
@@ -17,22 +24,22 @@
 
 </head>
 
-<body style="background-color: rgb(3, 3, 32);">
+<body style="background-color: rgb(3, 3, 32); background-image: url(assets/peakpx\ \(5\).jpg);">
    <header role="banner">
      <img id="logo-main" src="assets/Web_capture_18-9-2023_174229_smashinglogo.com-removebg-preview.png" width="200" alt="Logo Thing main logo">
    </header>
 
    <h1>Weather Dashboard</h1>
-   <div class="container">
+<div class="container">
    <div class="weather-input">
      <h3 style="color: rgb(155, 160, 164);">Enter a City Name</h3>
-     <input class="city-input" type="text" placeholder="E.g., Horana, Panadura, Moratuwa">
-     <button class="search-btn">Search</button>
+     <input class="city-input" id="location-input" type="text" placeholder="E.g., Horana, Panadura, Moratuwa">
+     <button class="search-btn" id="search-button">Search</button>
      <div class="separator"></div>
      <button class="location-btn">Use Current Location</button>
    </div>
 
-   <div class="weather-data">
+  <div class="weather-data">
     <div class="current-weather">
       <div class="details">
         <h2>_______ ( ______ )</h2>
@@ -78,8 +85,6 @@
     </div>
   </div>
 </div>
-
-
 
 <button class="historical-weather-btn">View Historical Weather (Last 5 Days)</button>
 <div class="historical-weather"></div>
@@ -131,11 +136,61 @@
     </div>
   </div>
 </div>
-  
 
 
+<h1>MAP</h1>
+    
+    <!-- Map container -->
+    <div id="map"></div>
+    
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+    
+          <!-- Twitter -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-twitter"></i
+          ></a>
+    
+          <!-- Google -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-google"></i
+          ></a>
+    
+          <!-- Instagram -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
+    
+          <!-- Linkedin -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+    
+          <!-- Github -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-github"></i
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+           ></a>
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">ICET.com(Web-development)</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
 
-
-   
 </body>
 </html>

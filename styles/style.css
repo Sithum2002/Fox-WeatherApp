@@ -253,11 +253,6 @@ header[role="banner"] {
 
 
 
-
-
-
-
-
   .testimonial-card .card-up {
     height: 120px;
     overflow: hidden;
@@ -324,4 +319,19 @@ header[role="banner"] {
 .navbar-brand {
   font-size: unset;
   height: 3.5rem;
+}
+
+
+
+
+
+
+/* Style for the map container */
+
+#map {
+  width: 38%;
+  height: 321px;
+  margin-top: 30px;
+  margin-left: 32%;
+  margin-bottom: 30px;
 }

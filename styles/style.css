@@ -13,6 +13,7 @@ body, html {
   height: 100%;
 }
 
+
 .bg {
   /* The image used */
   background-image: url("img_girl.jpg");
@@ -29,21 +30,25 @@ body, html {
 
 
 
-
-
-body {
+/* body{
+  background-color: #091f30;
+} */
+/* body {
     background: #091f30;
     color: #50779e;
-    background-color: #091f30;
+    
+     
+     /* background: var(--primary-color); color: var(--text-color); */
+
+
+  h1 {
+      background: #091d6b;
+      font-size: 1.75rem;
+      text-align: center;
+      padding: 18px 0;
+      color: #fff;
   }
 
-h1 {
-  background: #5372F0;
-  font-size: 1.75rem;
-  text-align: center;
-  padding: 18px 0;
-  color: #fff;
-}
 .container {
   display: flex;
   gap: 35px;
@@ -115,11 +120,11 @@ h1 {
   display: flex;
   justify-content: space-between;
 }
-.current-weather h2 {   /*////////////////////////////////*/
+.current-weather h2 {  
   font-weight: 700;
   font-size: 1.7rem;
 }
-.weather-data h6 {     /*////////////////////////////////*/
+.weather-data h6 { 
   margin-top: 12px;
   font-size: 1rem;
   font-weight: 500;
@@ -131,11 +136,11 @@ h1 {
   max-width: 120px;
   margin-top: -15px;
 }
-.current-weather .icon h6 {   /*////////////////////////////////*/
+.current-weather .icon h6 {  
   margin-top: -10px;
   text-transform: capitalize;
 }
-.days-forecast h2 {   /*////////////////////////////////*/
+.days-forecast h2 { 
   margin: 20px 0;
   font-size: 1.5rem;
 }
@@ -154,6 +159,7 @@ h1 {
 
 
 .weather-cards .historical-card {
+  
   color: #fff;
   padding: 18px 16px;
   list-style: none;
@@ -163,16 +169,28 @@ h1 {
 }
 
 
-
-
-.weather-cards .card h3 {     /*////////////////////////////////*/
+.weather-cards .card h3 {    
   font-size: 1.3rem;
   font-weight: 600;
 }
+
+.weather-cards .historical-card h3 {    
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+
+
 .weather-cards .card img {
   max-width: 70px;
   margin: 5px 0 -12px 0;
 }
+
+.weather-cards .historical-card img {
+  max-width: 70px;
+  margin: 5px 0 -12px 0;
+}
+
 
 
 @media (max-width: 1400px) {
@@ -204,13 +222,16 @@ h1 {
     font-size: 1.45rem;
     padding: 16px 0;
   }
+
   .container {
     flex-wrap: wrap;
     padding: 15px;
   }
+
   .weather-input {
     width: 100%;
   }
+
   .weather-data h2 {
     font-size: 1.35rem;
   }
@@ -251,42 +272,6 @@ header[role="banner"] {
 
 
 
-
-
-  .testimonial-card .card-up {
-    height: 120px;
-    overflow: hidden;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
-  }
-  .testimonial-card .avatar {
-    width: 110px;
-    margin-top: -60px;
-    overflow: hidden;
-    border: 3px solid #fff;
-    border-radius: 50%;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /* Color of the links BEFORE scroll */
 .navbar-scroll .nav-link,
 .navbar-scroll .navbar-toggler-icon,
@@ -320,18 +305,118 @@ header[role="banner"] {
   font-size: unset;
   height: 3.5rem;
 }
-
-
-
-
+  
 
 
 /* Style for the map container */
 
-#map {
+ #map {
   width: 38%;
   height: 321px;
   margin-top: 30px;
   margin-left: 32%;
   margin-bottom: 30px;
+} 
+
+
+/* Style for the navigation bar */
+.navbar {
+  background-color: black; /* Change background color to black */
 }
+
+/* Style for the links in the navigation bar */
+.navbar-nav .nav-link {
+  color: white !important; /* Change font color to white */
+}
+
+.bg-light2 {
+  background-color: #020e1a!important;
+}
+
+
+.about-img:before {
+  position: absolute;
+  content: '';
+  right: 27px;
+  top: -3px;
+  border: 9px solid rgba(255, 255, 255, 0.5);
+  width: 121%;
+  height: 114%;
+}
+
+
+
+
+@media(max-width:430px){
+  .about-text h2 {
+    color: rgb(127, 127, 157);
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    margin-left: 96px;
+}
+
+.about-img:before {
+  position: absolute;
+  content: '';
+  right: -12px;
+  top: -7px;
+  border: 9px solid rgba(255, 255, 255, 0.5);
+  width: 106%;
+  height: 116%;
+}
+
+.about-text p {
+  color: rgb(202, 202, 223);
+  margin-left: 34px;
+}
+}
+
+@media(max-width:780px){
+  .about-img:before {
+    position: absolute;
+    content: '';
+    right: -24px;
+    top: -7px;
+    border: 9px solid rgba(255, 255, 255, 0.5);
+    width: 107%;
+    height: 118%;
+}
+}
+
+
+
+
+/* Add CSS styles to align the cards on the right side */
+.historical-cards-container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.historical-card {
+  position: relative;
+  text-align: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+  /* flex-direction: column-reverse;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  max-width: 180px; Set a maximum width for the cards */
+}
+
+img {
+  max-width: 200px; 
+  height: auto;
+}
+
+

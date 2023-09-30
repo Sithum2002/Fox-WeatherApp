@@ -114,11 +114,12 @@ body, html {
 }
 .weather-data .current-weather {
   color: #fff;
-  background: #5372F0;
+  background: #213eb4;
   border-radius: 5px;
   padding: 20px 70px 20px 20px;
   display: flex;
   justify-content: space-between;
+  border-radius: 50px;
 }
 .current-weather h2 {  
   font-weight: 700;
@@ -154,7 +155,7 @@ body, html {
   list-style: none;
   width: calc(100% / 5);
   background: #6C757D;
-  border-radius: 5px;
+  border-radius: 30px;
 }
 
 
@@ -165,7 +166,7 @@ body, html {
   list-style: none;
   width: calc(100% / 5);
   background: #6C757D;
-  border-radius: 5px;
+  border-radius: 30px;
 }
 
 
@@ -203,11 +204,18 @@ body, html {
   .weather-cards .card {
     width: calc(100% / 4 - 15px);
   }
+  .weather-cards .historical-card {
+    width: calc(100% / 4 - 15px);
+  }
 }
 @media (max-width: 1200px) {
   .weather-cards .card {
     width: calc(100% / 3 - 15px);
   }
+  .weather-cards .historical-card {
+    width: calc(100% / 3 - 15px);
+  }
+
 }
 @media (max-width: 950px) {
   .weather-input {
@@ -216,6 +224,12 @@ body, html {
   .weather-cards .card {
     width: calc(100% / 2 - 10px);
   }
+  .weather-cards .historical-card {
+    width: calc(100% / 2 - 10px);
+  }
+
+
+
 }
 @media (max-width: 750px) {
   h1 {

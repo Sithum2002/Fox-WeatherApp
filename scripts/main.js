@@ -17,6 +17,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
                     <img src="${weatherItem.day.condition.icon}" alt="weather-icon">
                     <h6>${weatherItem.day.condition.text}</h6>
                 </div>`;
+
     } else { //five day forecast card
         return `<li class="card">
                     <h3>(${weatherItem.date})</h3>
@@ -59,6 +60,7 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
 }
 
 const getCityCoordinates = () => {
+  
     const cityName = cityInput.value.trim();
     if (cityName === "") return;
     
@@ -105,15 +107,25 @@ cityInput.addEventListener("keyup", e => e.key === "Enter" && getCityCoordinates
 // Function to update weather cards with data
 function updateWeatherCards(weatherData) {
   const weatherCards = document.querySelectorAll(".historical-card");
+
+
   weatherData.forEach((weatherItem, index) => {
     const card = weatherCards[index];
-    card.querySelector("h3").textContent = `Day ${index + 1} - ${weatherItem.date}`;
-    card.querySelector("img").src = `https:${weatherItem.day.condition.icon}`;
+    card.querySelector("h3").textContent = `(${weatherItem.date})`;
+    const imgElement = card.querySelector("img");
+    if (imgElement) {
+      imgElement.src = weatherItem.day.condition.icon;
+
+
+    } else {
+      console.error("Image element not found in card:", card);
+    }
     card.querySelector("h6:nth-of-type(1)").textContent = `Temp: ${weatherItem.day.maxtemp_c} °C`;
     card.querySelector("h6:nth-of-type(2)").textContent = `Wind: ${weatherItem.day.maxwind_kph} KPH`;
     card.querySelector("h6:nth-of-type(3)").textContent = `Humidity: ${weatherItem.day.avghumidity}%`;
   });
 }
+
 
 const getHistoricalWeather = (cityName) => {
   const API_KEY = '06faa0f569dc4db6ada123522231809'; 
@@ -126,10 +138,10 @@ const getHistoricalWeather = (cityName) => {
 
   fetch(HISTORICAL_API_URL)
     .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
+      // if (!response.ok) {
+      //   throw new Error('Network response was not ok');
+      // }
+       return response.json();
     })
     .then((data) => {
       const historicalData = data.forecast.forecastday;
@@ -140,10 +152,10 @@ const getHistoricalWeather = (cityName) => {
       historicalWeatherDiv.appendChild(weatherCardsContainer);
       updateWeatherCards(historicalData);
     })
-    .catch((error) => {
-      console.error('An error occurred while fetching historical weather data:', error);
-      alert('An error occurred while fetching historical weather data.');
-    });
+    // .catch((error) => {
+    //   console.error('An error occurred while fetching historical weather data:', error);
+    //   alert('An error occurred while fetching historical weather data.');
+    // });
 };
 
 const searchButton2 = document.querySelector("#search-button");
@@ -158,20 +170,18 @@ searchButton.addEventListener("click", () => {
 
 
 
+const apiKey = 'AIzaSyD0bj2iECF4dD3GesTRoBnVqGfHXwzZcrA'; // Replace with your API key
 
-  const apiKey = 'AIzaSyD0bj2iECF4dD3GesTRoBnVqGfHXwzZcrA';
-
-  // Initialize the map
-  function initMap() {
-    const defaultLocation = { lat: 6.9271, lng: 79.8612 }; 
+// Initialize the map
+function initMap() {
+    const defaultLocation = { lat: 6.9271, lng: 79.8612 };
     const map = new google.maps.Map(document.getElementById('map'), {
         center: defaultLocation,
-        zoom: 8 
+        zoom: 8
     });
-
     const geocoder = new google.maps.Geocoder();
-
-    document.getElementById('').addEventListener('click', function() {
+    
+    document.getElementById('search-button').addEventListener('click', function() {
         const locationInput = document.getElementById('location-input').value;
         geocodeAddress(geocoder, map, locationInput);
     });
@@ -186,10 +196,11 @@ function geocodeAddress(geocoder, map, address) {
                 map: map,
                 position: location
             });
-
-            const cityName = results[0].formatted_address;
+            const cityName = results[0].address_components.find(component => {
+                return component.types.includes('locality');
+            });
             const infoWindow = new google.maps.InfoWindow({
-                content: cityName
+                content: cityName ? cityName.long_name : 'City not found'
             });
             infoWindow.open(map, marker);
         } else {

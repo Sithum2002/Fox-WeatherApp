@@ -4,7 +4,7 @@ const locationButton = document.querySelector(".location-btn");
 const currentWeatherDiv = document.querySelector(".current-weather");
 const weatherCardsDiv = document.querySelector(".weather-cards");
 
-const API_KEY = "06faa0f569dc4db6ada123522231809";
+const API_KEY = "24b03d72cc5a4d02954155743230210";
 const createWeatherCard = (cityName, weatherItem, index) => {
     if(index === 0) { 
         return `<div class="details">
@@ -18,7 +18,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
                     <h6>${weatherItem.day.condition.text}</h6>
                 </div>`;
 
-    } else { //five day forecast card
+    } else { 
         return `<li class="card">
                     <h3>(${weatherItem.date})</h3>
                     <img src="${weatherItem.day.condition.icon}" alt="weather-icon">
@@ -30,21 +30,18 @@ const createWeatherCard = (cityName, weatherItem, index) => {
 }
 
 const getWeatherDetails = (cityName, latitude, longitude) => {
-    const WEATHER_API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=6`;
+    const WEATHER_API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=7`;
 
     fetch(WEATHER_API_URL)
         .then(response => response.json())
         .then(data => {
-            // Extract the current weather and forecast data
             const currentWeather = data.current;
             const fiveDaysForecast = data.forecast.forecastday;
 
-            // Clearing previous weather data
             cityInput.value = "";
             currentWeatherDiv.innerHTML = "";
             weatherCardsDiv.innerHTML = "";
 
-            // Creating weather cards and adding them to the DOM
             fiveDaysForecast.forEach((weatherItem, index) => {
                 const html = createWeatherCard(cityName, weatherItem, index);
                 if (index === 0) {
@@ -66,16 +63,15 @@ const getCityCoordinates = () => {
     
     const API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=5`;
     
-    // Get entered city coordinates (latitude, longitude, and name) from the API response
     fetch(API_URL)
         .then(response => response.json())
         .then(data => {
-            if (!data.location) return alert(`No coordinates found for ${cityName}`);
+            if (!data.location) return alert(`Not found for ${cityName}`);
             const { lat, lon, name } = data.location;
             getWeatherDetails(name, lat, lon);
         })
         .catch(() => {
-            alert("An error occurred while fetching the coordinates!");
+            alert("Input data Error!");
         });
 }
 
@@ -85,7 +81,7 @@ const getUserCoordinates = () => {
             const { latitude, longitude } = position.coords; 
             getWeatherDetails("Your Location", latitude, longitude);
         },
-        error => { // Show alert if user denied the location permission
+        error => { 
             if (error.code === error.PERMISSION_DENIED) {
                 alert("Geolocation request denied. Please reset location permission to grant access again.");
             } else {
@@ -101,10 +97,6 @@ cityInput.addEventListener("keyup", e => e.key === "Enter" && getCityCoordinates
 
 
 
-
-
-
-// Function to update weather cards with data
 function updateWeatherCards(weatherData) {
   const weatherCards = document.querySelectorAll(".historical-card");
 
@@ -128,7 +120,7 @@ function updateWeatherCards(weatherData) {
 
 
 const getHistoricalWeather = (cityName) => {
-  const API_KEY = '06faa0f569dc4db6ada123522231809'; 
+  const API_KEY = '24b03d72cc5a4d02954155743230210'; 
   const today = new Date();
   const endDate = today.toISOString().slice(0, 10); 
   today.setDate(today.getDate() - 5); 
@@ -138,10 +130,9 @@ const getHistoricalWeather = (cityName) => {
 
   fetch(HISTORICAL_API_URL)
     .then((response) => {
-      // if (!response.ok) {
-      //   throw new Error('Network response was not ok');
-      // }
+   
        return response.json();
+
     })
     .then((data) => {
       const historicalData = data.forecast.forecastday;
@@ -152,10 +143,8 @@ const getHistoricalWeather = (cityName) => {
       historicalWeatherDiv.appendChild(weatherCardsContainer);
       updateWeatherCards(historicalData);
     })
-    // .catch((error) => {
-    //   console.error('An error occurred while fetching historical weather data:', error);
-    //   alert('An error occurred while fetching historical weather data.');
-    // });
+
+
 };
 
 const searchButton2 = document.querySelector("#search-button");
@@ -169,10 +158,8 @@ searchButton.addEventListener("click", () => {
 
 
 
+const apiKey = 'AIzaSyD0bj2iECF4dD3GesTRoBnVqGfHXwzZcrA'; 
 
-const apiKey = 'AIzaSyD0bj2iECF4dD3GesTRoBnVqGfHXwzZcrA'; // Replace with your API key
-
-// Initialize the map
 function initMap() {
     const defaultLocation = { lat: 6.9271, lng: 79.8612 };
     const map = new google.maps.Map(document.getElementById('map'), {
